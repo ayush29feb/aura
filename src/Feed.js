@@ -68,7 +68,7 @@ function Feed({ media }) {
 
   // Prefetch next N=10 images for smoother scrolling
   useEffect(() => {
-    const prefetchCount = 10;
+    const prefetchCount = 25;
 
     for (let i = currentIndex; i < Math.min(currentIndex + prefetchCount, media.length); i++) {
       // Only prefetch if not already prefetched and is an image
