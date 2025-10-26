@@ -1,9 +1,9 @@
 {
-  "name": "tiktok-web",
-  "version": "1.1.0",
-  "description": "TikTok-style mobile web app",
+  "name": "aura",
+  "version": "1.0.0",
+  "description": "Aura - TikTok-style mobile web app",
   "private": true,
-  "homepage": "https://ayush29feb.github.io/short-form-react-boilerplate",
+  "homepage": "https://ayush29feb.github.io/aura",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
