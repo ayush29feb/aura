@@ -9,6 +9,7 @@ function Feed({ media }) {
   const [touchOffset, setTouchOffset] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
   const containerRef = useRef(null);
+  const prefetchedIndices = useRef(new Set());
 
   // Minimum swipe distance (in px) to trigger a swipe
   const minSwipeDistance = 50;
@@ -63,6 +64,20 @@ function Feed({ media }) {
         video.preload = 'metadata';
       }
     });
+  }, [currentIndex, media]);
+
+  // Prefetch next N=10 images for smoother scrolling
+  useEffect(() => {
+    const prefetchCount = 10;
+
+    for (let i = currentIndex; i < Math.min(currentIndex + prefetchCount, media.length); i++) {
+      // Only prefetch if not already prefetched and is an image
+      if (!prefetchedIndices.current.has(i) && media[i] && media[i].type === 'image') {
+        const img = new Image();
+        img.src = media[i].url;
+        prefetchedIndices.current.add(i);
+      }
+    }
   }, [currentIndex, media]);
 
   // Calculate transform based on current index and touch offset
