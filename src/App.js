@@ -7,11 +7,21 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Fisher-Yates shuffle algorithm
+    const shuffleArray = (array) => {
+      const shuffled = [...array];
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+      return shuffled;
+    };
+
     // Load media from JSON file
     fetch(`${process.env.PUBLIC_URL}/media.json`)
       .then(response => response.json())
       .then(data => {
-        setMedia(data);
+        setMedia(shuffleArray(data));
         setLoading(false);
       })
       .catch(error => {

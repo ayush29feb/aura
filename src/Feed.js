@@ -119,11 +119,6 @@ function Feed({ media }) {
       >
         {renderItems()}
       </div>
-
-      {/* Optional: Progress indicator */}
-      <div className="progress-indicator">
-        {currentIndex + 1} / {media.length}
-      </div>
     </div>
   );
 }
