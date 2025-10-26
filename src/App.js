@@ -21,7 +21,9 @@ function App() {
     fetch(`${process.env.PUBLIC_URL}/media.json`)
       .then(response => response.json())
       .then(data => {
-        setMedia(shuffleArray(data));
+        // Filter to only include products with model1 images
+        const filteredData = data.filter(item => item.images && item.images.model1);
+        setMedia(shuffleArray(filteredData));
         setLoading(false);
       })
       .catch(error => {
