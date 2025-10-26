@@ -117,6 +117,16 @@ function Feed({ media }) {
     return items;
   };
 
+  const handleProductClick = () => {
+    const currentProduct = media[currentIndex];
+    if (currentProduct && currentProduct.name) {
+      const searchQuery = encodeURIComponent(`Abercrombie and Fitch ${currentProduct.name}`);
+      window.open(`https://www.google.com/search?q=${searchQuery}`, '_blank', 'noopener,noreferrer');
+    }
+  };
+
+  const currentProduct = media[currentIndex];
+
   return (
     <div
       className="feed-container"
@@ -134,6 +144,13 @@ function Feed({ media }) {
       >
         {renderItems()}
       </div>
+
+      {currentProduct && currentProduct.name && currentProduct.price && (
+        <button className="product-link" onClick={handleProductClick}>
+          <span className="product-price">{currentProduct.price}</span>
+          <span className="product-name">{currentProduct.name}</span>
+        </button>
+      )}
     </div>
   );
 }
