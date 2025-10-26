@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/aura/static/css/main.06f9a05a.css",
-    "main.js": "/aura/static/js/main.8dda3f95.js",
+    "main.js": "/aura/static/js/main.fb2d48ed.js",
     "index.html": "/aura/index.html",
     "main.06f9a05a.css.map": "/aura/static/css/main.06f9a05a.css.map",
-    "main.8dda3f95.js.map": "/aura/static/js/main.8dda3f95.js.map"
+    "main.fb2d48ed.js.map": "/aura/static/js/main.fb2d48ed.js.map"
   },
   "entrypoints": [
     "static/css/main.06f9a05a.css",
-    "static/js/main.8dda3f95.js"
+    "static/js/main.fb2d48ed.js"
   ]
 }
