@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import MediaItem from './MediaItem';
 import './Feed.css';
 import { MediaItem as MediaItemType } from './types';

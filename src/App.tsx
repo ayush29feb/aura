@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import Feed from './Feed';
 import { MediaItem, FeedMode } from './types';
