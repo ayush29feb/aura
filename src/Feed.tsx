@@ -46,12 +46,12 @@ function Feed({ media }: FeedProps) {
     if (isSwipeUp && currentIndex < media.length - 1 && !transitioning) {
       // Swipe up - next item
       setTransitioning(true);
-      setCurrentIndex(prev => prev + 1);
+      setCurrentIndex((prev: number) => prev + 1);
       setTimeout(() => setTransitioning(false), 300);
     } else if (isSwipeDown && currentIndex > 0 && !transitioning) {
       // Swipe down - previous item
       setTransitioning(true);
-      setCurrentIndex(prev => prev - 1);
+      setCurrentIndex((prev: number) => prev - 1);
       setTimeout(() => setTransitioning(false), 300);
     }
 

@@ -17,7 +17,7 @@ function MediaItem({ item, isActive }: MediaItemProps) {
     if (item.type === 'video' && video) {
       if (isActive) {
         // Play video when it becomes active
-        video.play().catch(err => {
+        video.play().catch((err: unknown) => {
           console.log('Autoplay prevented:', err);
           // If autoplay fails, it's usually due to browser policy
           // The user will need to interact with the page first
