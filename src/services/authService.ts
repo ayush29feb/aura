@@ -12,10 +12,13 @@ export interface AuthUser {
  * Sign in with Google OAuth
  */
 export async function signInWithGoogle(): Promise<{ error: AuthError | null }> {
+  // Use the full current URL for redirect
+  const redirectUrl = window.location.href.split('?')[0].split('#')[0];
+
   const { error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
     options: {
-      redirectTo: `${window.location.origin}`,
+      redirectTo: redirectUrl,
     },
   });
   return { error };
@@ -25,10 +28,13 @@ export async function signInWithGoogle(): Promise<{ error: AuthError | null }> {
  * Sign in with GitHub OAuth
  */
 export async function signInWithGithub(): Promise<{ error: AuthError | null }> {
+  // Use the full current URL for redirect
+  const redirectUrl = window.location.href.split('?')[0].split('#')[0];
+
   const { error } = await supabase.auth.signInWithOAuth({
     provider: 'github',
     options: {
-      redirectTo: `${window.location.origin}`,
+      redirectTo: redirectUrl,
     },
   });
   return { error };
