@@ -1,26 +1,31 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import MediaItem from './MediaItem';
 import './Feed.css';
+import { MediaItem as MediaItemType } from './types';
 
-function Feed({ media }) {
+interface FeedProps {
+  media: MediaItemType[];
+}
+
+function Feed({ media }: FeedProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
   const [touchOffset, setTouchOffset] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
-  const containerRef = useRef(null);
-  const prefetchedIndices = useRef(new Set());
+  const containerRef = useRef<HTMLDivElement>(null);
+  const prefetchedIndices = useRef(new Set<number>());
 
   // Minimum swipe distance (in px) to trigger a swipe
   const minSwipeDistance = 50;
 
-  const handleTouchStart = (e) => {
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     setTouchEnd(0);
     setTouchOffset(0);
     setTouchStart(e.targetTouches[0].clientY);
   };
 
-  const handleTouchMove = (e) => {
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
     const currentTouch = e.targetTouches[0].clientY;
     setTouchEnd(currentTouch);
 
@@ -41,12 +46,12 @@ function Feed({ media }) {
     if (isSwipeUp && currentIndex < media.length - 1 && !transitioning) {
       // Swipe up - next item
       setTransitioning(true);
-      setCurrentIndex(prev => prev + 1);
+      setCurrentIndex((prev: number) => prev + 1);
       setTimeout(() => setTransitioning(false), 300);
     } else if (isSwipeDown && currentIndex > 0 && !transitioning) {
       // Swipe down - previous item
       setTransitioning(true);
-      setCurrentIndex(prev => prev - 1);
+      setCurrentIndex((prev: number) => prev - 1);
       setTimeout(() => setTransitioning(false), 300);
     }
 
@@ -81,7 +86,7 @@ function Feed({ media }) {
   }, [currentIndex, media]);
 
   // Calculate transform based on current index and touch offset
-  const getTransform = () => {
+  const getTransform = (): number => {
     const baseTransform = -currentIndex * 100;
     const offsetPercent = (touchOffset / window.innerHeight) * 100;
     return baseTransform + offsetPercent;
@@ -89,7 +94,7 @@ function Feed({ media }) {
 
   // Render adjacent items for smooth transitions
   const renderItems = () => {
-    const items = [];
+    const items: JSX.Element[] = [];
     const indicesToRender = [currentIndex - 1, currentIndex, currentIndex + 1];
 
     indicesToRender.forEach(index => {

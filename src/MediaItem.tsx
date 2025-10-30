@@ -1,8 +1,14 @@
-import React, { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import './MediaItem.css';
+import { MediaItem as MediaItemType } from './types';
 
-function MediaItem({ item, isActive }) {
-  const videoRef = useRef(null);
+interface MediaItemProps {
+  item: MediaItemType;
+  isActive: boolean;
+}
+
+function MediaItem({ item, isActive }: MediaItemProps) {
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
@@ -11,7 +17,7 @@ function MediaItem({ item, isActive }) {
     if (item.type === 'video' && video) {
       if (isActive) {
         // Play video when it becomes active
-        video.play().catch(err => {
+        video.play().catch((err: unknown) => {
           console.log('Autoplay prevented:', err);
           // If autoplay fails, it's usually due to browser policy
           // The user will need to interact with the page first

@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import Feed from './Feed';
+import { MediaItem, FeedMode } from './types';
 
 function App() {
-  const [media, setMedia] = useState([]);
+  const [media, setMedia] = useState<MediaItem[]>([]);
   const [loading, setLoading] = useState(true);
-  const [feedMode, setFeedMode] = useState('afProducts'); // 'afProducts' or 'myPhotos'
+  const [feedMode, setFeedMode] = useState<FeedMode>('afProducts'); // 'afProducts' or 'myPhotos'
 
   useEffect(() => {
     setLoading(true);
 
     // Fisher-Yates shuffle algorithm
-    const shuffleArray = (array) => {
+    const shuffleArray = (array: MediaItem[]): MediaItem[] => {
       const shuffled = [...array];
       for (let i = shuffled.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -25,7 +26,7 @@ function App() {
 
     fetch(`${process.env.PUBLIC_URL}/${jsonFile}`)
       .then(response => response.json())
-      .then(data => {
+      .then((data: MediaItem[]) => {
         // Filter to only include products with model1 images (only for A&F products)
         const filteredData = feedMode === 'afProducts'
           ? data.filter(item => item.images && item.images.model1)
