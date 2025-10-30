@@ -1,8 +1,14 @@
 import React, { useRef, useEffect, useState } from 'react';
 import './MediaItem.css';
+import { MediaItem as MediaItemType } from './types';
 
-function MediaItem({ item, isActive }) {
-  const videoRef = useRef(null);
+interface MediaItemProps {
+  item: MediaItemType;
+  isActive: boolean;
+}
+
+function MediaItem({ item, isActive }: MediaItemProps) {
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
