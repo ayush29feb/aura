@@ -112,7 +112,7 @@ The app integrates with Supabase for authentication, database, and cloud storage
 
 3. **Set up OAuth providers** in Supabase dashboard:
    - Navigate to Authentication > Providers
-   - Enable Google and GitHub OAuth
+   - Enable Google OAuth
    - Configure redirect URLs: `http://localhost:3000` and your production URL
 
 4. **Create database tables** using the Supabase SQL editor:
@@ -226,7 +226,7 @@ To migrate existing data from JSON files to Supabase:
 
 - **Public Access**: A&F products feed is accessible without authentication
 - **Private Access**: "My Photos" feed requires users to sign in
-- **OAuth Providers**: Users can sign in with Google or GitHub
+- **OAuth Providers**: Users can sign in with Google
 - **Upload**: Authenticated users can upload photos to their personal collection
 
 ### Services Architecture

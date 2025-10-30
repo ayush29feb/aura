@@ -116,21 +116,6 @@ USING (
 4. Back in Supabase, paste the Client ID and Client Secret
 5. Click "Save"
 
-### GitHub OAuth
-
-1. In Supabase, find "GitHub" under Providers and click "Enable"
-2. Create a GitHub OAuth App:
-   - Go to GitHub Settings > Developer Settings > OAuth Apps
-   - Click "New OAuth App"
-   - Fill in:
-     - **Application name**: Aura
-     - **Homepage URL**: `http://localhost:3000` (or your production URL)
-     - **Authorization callback URL**: `https://your-project-id.supabase.co/auth/v1/callback`
-   - Click "Register application"
-   - Copy Client ID and generate a Client Secret
-3. Back in Supabase, paste the Client ID and Client Secret
-4. Click "Save"
-
 ## Step 7: Create a Demo User
 
 For the migration script to work, you need a demo user:
@@ -179,7 +164,7 @@ The script will:
 
 2. **Test Authentication**:
    - Click "Sign In" button
-   - Try signing in with Google or GitHub
+   - Try signing in with Google
    - Verify your avatar/email appears
 
 3. **Test My Photos Feed**:

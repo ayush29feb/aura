@@ -102,11 +102,3 @@
 .auth-menu-button:hover {
   background: rgba(0, 0, 0, 0.05);
 }
-
-.auth-menu-button.google {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.auth-menu-button.github {
-  /* No additional styles needed */
-}

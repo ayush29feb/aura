@@ -7,7 +7,7 @@ Supabase has been successfully integrated into the Aura application with full au
 ## What Was Implemented
 
 ### 1. **Authentication System**
-- OAuth integration with Google and GitHub providers
+- OAuth integration with Google provider
 - User session management
 - Protected routes for private user content
 - User profile management with avatars
@@ -29,7 +29,7 @@ Three main tables:
 - Displays sign-in/sign-out button
 - Shows user avatar when authenticated
 - Dropdown menu for authentication options
-- Supports Google and GitHub OAuth
+- Supports Google OAuth
 
 #### UploadButton (`src/components/UploadButton.tsx`)
 - Camera icon for photo uploads
@@ -45,7 +45,6 @@ Three main tables:
 
 #### `src/services/authService.ts`
 - `signInWithGoogle()` - Google OAuth
-- `signInWithGithub()` - GitHub OAuth
 - `signOut()` - Sign out current user
 - `getCurrentUser()` - Get authenticated user
 - `onAuthStateChange()` - Subscribe to auth changes
@@ -204,7 +203,6 @@ CLAUDE.md - Added Supabase documentation
 
 5. **Configure OAuth**
    - Enable Google OAuth in Supabase
-   - Enable GitHub OAuth in Supabase
    - Set up redirect URLs
 
 6. **Create Demo User**
@@ -221,7 +219,7 @@ CLAUDE.md - Added Supabase documentation
 
 9. **Test Everything**
    - Test A&F products feed (public)
-   - Test authentication (Google/GitHub)
+   - Test authentication (Google)
    - Test My Photos feed (private)
    - Test photo upload
 
@@ -255,7 +253,7 @@ CLAUDE.md - Added Supabase documentation
 ## Summary
 
 The Aura application now has a complete Supabase integration with:
-- ✅ User authentication (Google, GitHub OAuth)
+- ✅ User authentication (Google OAuth)
 - ✅ Cloud database for products and user media
 - ✅ Cloud storage for user-uploaded photos
 - ✅ Row-level security and privacy controls

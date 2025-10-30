@@ -25,22 +25,6 @@ export async function signInWithGoogle(): Promise<{ error: AuthError | null }> {
 }
 
 /**
- * Sign in with GitHub OAuth
- */
-export async function signInWithGithub(): Promise<{ error: AuthError | null }> {
-  // Use the full current URL for redirect
-  const redirectUrl = window.location.href.split('?')[0].split('#')[0];
-
-  const { error } = await supabase.auth.signInWithOAuth({
-    provider: 'github',
-    options: {
-      redirectTo: redirectUrl,
-    },
-  });
-  return { error };
-}
-
-/**
  * Sign out the current user
  */
 export async function signOut(): Promise<{ error: AuthError | null }> {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { signInWithGoogle, signInWithGithub, signOut } from '../services/authService';
+import { signInWithGoogle, signOut } from '../services/authService';
 import type { User } from '@supabase/supabase-js';
 import './AuthButton.css';
 
@@ -15,16 +15,6 @@ const AuthButton: React.FC<AuthButtonProps> = ({ user, onAuthChange }) => {
     const { error } = await signInWithGoogle();
     if (error) {
       console.error('Error signing in with Google:', error);
-    } else {
-      setShowMenu(false);
-      onAuthChange?.();
-    }
-  };
-
-  const handleGithubSignIn = async () => {
-    const { error } = await signInWithGithub();
-    if (error) {
-      console.error('Error signing in with GitHub:', error);
     } else {
       setShowMenu(false);
       onAuthChange?.();
@@ -84,11 +74,8 @@ const AuthButton: React.FC<AuthButtonProps> = ({ user, onAuthChange }) => {
       </button>
       {showMenu && (
         <div className="auth-menu">
-          <button onClick={handleGoogleSignIn} className="auth-menu-button google">
+          <button onClick={handleGoogleSignIn} className="auth-menu-button">
             Sign in with Google
-          </button>
-          <button onClick={handleGithubSignIn} className="auth-menu-button github">
-            Sign in with GitHub
           </button>
         </div>
       )}
