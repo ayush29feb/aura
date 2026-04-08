@@ -1,0 +1,33 @@
+name: Aura
+options:
+  bundleIdPrefix: com.ayush29feb
+  deploymentTarget:
+    iOS: "17.0"
+  defaultConfig: Debug
+
+packages:
+  supabase-swift:
+    url: https://github.com/supabase/supabase-swift
+    from: 2.5.1
+
+targets:
+  Aura:
+    type: application
+    platform: iOS
+    sources:
+      - path: Aura
+    info:
+      path: Aura/Info.plist
+    dependencies:
+      - package: supabase-swift
+        product: Supabase
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.ayush29feb.aura
+        SWIFT_VERSION: "5.9"
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: ""
+        TARGETED_DEVICE_FAMILY: "1"
+        IPHONEOS_DEPLOYMENT_TARGET: "17.0"
+        SUPPORTED_PLATFORMS: iphoneos iphonesimulator
+        SUPPORTS_MACCATALYST: "NO"
